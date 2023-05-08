@@ -21,6 +21,9 @@ if (appStore.whenStarts === 'new' && !chatStore.isCurrentNew) {
 }
 
 function handleAdd() {
+  if (chatStore.history.length === 10) {
+    chatStore.deleteHistory(9)
+  }
   chatStore.addHistory({ title: 'New Chat', uuid: Date.now(), isEdit: false })
   if (isMobile.value)
     appStore.setSiderCollapsed(true)
